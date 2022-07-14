@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<style>
+
+body{
+ background-color:#eee;
+ font-family: "Poppins", sans-serif;
+ font-weight: 300;
+}
+
+.height{
+ height: 80vh;
+}
+
+
+.search{
+position: relative;
+box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+  
+}
+
+.search input{
+
+ height: 60px;
+ text-indent: 25px;
+ border: 2px solid #d6d4d4;
+
+
+}
+
+
+.search input:focus{
+
+ box-shadow: none;
+ border: 2px solid blue;
+
+
+}
+
+.search .fa-search{
+
+ position: absolute;
+ top: 20px;
+ left: 16px;
+
+}
+
+.search button{
+
+ position: absolute;
+ top: 5px;
+ right: 5px;
+ height: 50px;
+ width: 110px;
+ background: blue;
+
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $("#key").on("input", function(){
+          // Print entered value in a div box
+          $("#result").text($(this).val());
+
+          $.ajax({
+            type: 'GET',
+            url:"http://127.0.0.1:5000/Searchapi",
+            data: {key:$(this).val()},
+            //url: "http://suggestqueries.google.com/complete/search?client=firefox&q=halal&hl=en",
+            //data:{ client: "firefox", q: request.form["key"], hl: "en"},
+            success: function(data) {
+              console.log(data)
+              var trHTML = '';
+              $('#resultsTable').empty();
+              $.each(data, function (i, item) {
+                
+                  trHTML += '<tr><td>' + data[i] + '</td></tr>';
+                });
+            
+              $('#resultsTable').append(trHTML);
+            }
+          });
+
+      });
+  });
+  </script>
+
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <h3 class="heading mt-5 text-center">Hi! How can we help You?</h3> 
+      <div class="search">
+        <i class="fa fa-search"></i>
+        <form id="Search",action = "#", method="post">
+            <input type="text" class="form-control" name="key" id="key">
+            <button type="submit" id="Search" class="btn btn-primary">Search</button>
+        </form>
+        <table class="table" style="padding: 20px;" id="resultsTable"></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
