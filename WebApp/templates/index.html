@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <style>
+    h2 {
+      font-weight: 400;
+      text-align: center;
+    }
+
+    p {
+      position: relative;
+    }
+
+    #login-form-wrap {
+      background-color: #eeedf1;
+      width: 35%;
+      margin: 300px auto;
+      text-align: center;
+      padding: 20px 0 0 0;
+      border-radius: 4px;
+    }
+
+    #login-form {
+      padding: 0 60px;
+    }
+
+    #create-account-wrap {
+      background-color: #eeedf1;
+      color: #8a8b8e;
+      font-size: 14px;
+      width: 100%;
+      padding: 10px 0;
+      border-radius: 0 0 4px 4px;
+    }
+    
+    .footer{
+      margin-top:150 px;
+      width: 100%;
+      padding: 100px 15%;
+      background: #333;
+      color: #efefef;
+      display: flex;
+    }
+    
+  </style>
+  <title>HTML5 Login Form with validation Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="login-form-wrap">
+  <h2>Login</h2>
+  <form id="login-form">
+    <p>
+    <input type="text" id="username" name="username" placeholder="Username" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+    <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+    <input type="submit" id="login" value="Login"><span></span><span></span></i>
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <p>Not a member? <a href="#">Create Account</a><p>
+  </div>
+</div>
+  
+</body>
+</html>

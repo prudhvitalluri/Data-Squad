@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<div style="padding : 60px;">
+<h1 class="h1 text-center"> Question pairs Classification </h1> 
+<br> </br>
+<h2> Description of the problem: </h2><p> Building a question similarity classifier 
+    to detect duplicate questions in order to provide a better user experience along with incorporating some 
+    functionalities like speech recognition and question auto-complete. </p>
+<h3> Problem Motivation </h3> <p> 
+    <li> Similar sort of questions are frequently asked in community question answering forums like quora.</li>
+    <li> A lot of time gets wasted for both answer seekers and the ones who answer the questions.</li>
+    <li>The aim is to build a question similarity classifier to detect duplicate questions by 
+    calculating the similarity scores using various machine learning algorithms like random forests, 
+    logistic regression ,SVM and deep learning architectures like Neural networks, Sentence BERT and LSTM to improve user experience.</li>
+ </p>
+
+ <h4>Data Set Description </h4> <p>
+    The Quora Question Pairs dataset consists of 404,290 question pairs, provided by Quora
+    <br/> <u><h5 class = "bold"> DataFields: </h5> </u>
+    <li> id(int) - the id of a training set question pair.</li>
+    <li> qid1(int), qid2(int) - unique ids of each question (only available in train.csv) </li>
+    <li> question1(object), question2(object) - the full text of each question </li>
+    <li> is_duplicate(int) - the target variable, set to 1 if question1 and question2 have essentially the same meaning,
+     and 0 otherwise.</li>
+     <br> 
+        <p>
+
+        </p>
+
+    </br>
+<br/>
+
+<footer class="bg-light text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-lg-start">Team Members</h5>
+  
+          <p>
+            <li>Krishna Charan Thota</li>
+            <li>Lovi Goyal</li>
+            <li>Nageswara Chaitanya Pullela</li>
+            <li>Nilay Patel</li>
+            <li>Prudhvi Talluri</li>
+            <li>Rahul Niroop</li>
+            <li>Raja Nishanth Chowdary Malladi </li>
+            <li>Sukruth Sathyanarayana Vasisht</li>
+          </p>
+        </div>
+        <!--Grid column-->
+  
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-lg-start">References</h5>
+  
+          <p>
+        
+          </p>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center bold" style="background-color: rgba(0, 0, 0, 0.2);">
+      Team DataSquad
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+{% endblock %}

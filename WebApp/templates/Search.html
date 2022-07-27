@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<style>
+body{
+
+background: #d1d5db;
+}
+
+.height{
+
+height: 80vh;
+}
+
+.form{
+
+position: relative;
+}
+
+.form .fa-search{
+
+position: absolute;
+top:20px;
+left: 20px;
+color: #9ca3af;
+
+}
+
+.form span{
+
+position: absolute;
+right: 17px;
+top: 13px;
+padding: 2px;
+border-left: 1px solid #d1d5db;
+
+}
+
+.form span button{
+
+position: absolute;
+right: -100px;
+top: -4px;
+border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+padding-left: 7px;
+}
+
+.left-pan i{
+
+padding-left: 10px;
+}
+
+.form-input{
+
+height: 55px;
+text-indent: 33px;
+border-radius: 10px;
+}
+
+.form-input:focus{
+
+box-shadow: none;
+border:none;
+}
+
+.anyClass {
+  height:550px;
+  overflow-y: scroll;
+}
+
+.anyClass::-webkit-scrollbar {
+    display: none;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+  $(document).ready(function(){
+      $("#key").on("input", function(){
+          // Print entered value in a div box
+          $("#result").text($(this).val());
+
+          $.ajax({
+            type: 'GET',
+            url:"http://127.0.0.1:5000/Searchapi",
+            data: {key:$(this).val()},
+            success: function(data) {
+              console.log(data)
+              var trHTML = '';
+              $('#resultsTable').empty();
+              $.each(data, function (i, item) {
+                  trHTML += '<tr><td>' + data[i] + '</td></tr>';
+                });
+              $('#resultsTable').append(trHTML);
+            }
+          });
+
+      });
+  });
+  $(document).ready(function(){
+    $("div.tableList table").delegate('tr', 'click', function() {
+      $("#key").val($(this).text());
+        //get <td> element values here!!??
+    });
+});
+  function record() 
+    {
+      var recognition = new webkitSpeechRecognition();
+      recognition.lang = "en-GB";
+
+      recognition.onresult = function(event) {
+          console.log("event");
+          document.getElementById('key').value = event.results[0][0].transcript;
+      }
+      recognition.start();
+    }
+  </script>
+<div class="container">
+
+  <div class="row height d-flex justify-content-center align-items-center">
+
+    <div class="col-md-6">
+      <form id="Search",action = "#", method="post">
+      <div class="form">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control form-input" name="key" id="key" placeholder="Search anything...">
+        <span class="left-pan"><a href="javascript:record();"><i class="fa fa-microphone"></i></a></span>
+        <span><button type="submit" id="Search" class="btn btn-primary">Search</button></span>
+      </div>
+    </form>
+    <div class="tableList">
+    <table class="table table-bordered table-hover" style="padding: 20px; background-color: white;" id="resultsTable"></table>
+    <!-- <table class="table table-striped table-hover" style="padding: 20px; background-color: white;">
+      {% for result in Results %}
+          <tr>
+              <td>{{ result }}</td>
+          </tr>
+          {% endfor %}
+      </table>-->
+      <div class="anyClass">
+      {% for result in Results %} 
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ result[0] }}</h5>
+          <p class="card-text">{{ "%.9f" % (result[1]*100) }}%</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+{% endblock %}
