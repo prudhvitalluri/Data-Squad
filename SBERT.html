@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<div style="padding : 60px;">
+<h1 class="h1 text-center"> Sentence Bert </h1> 
+
+<p> BERT has the ability to embed the meaning of words into densely packed vectors and 
+    these vectors can be compared using the cosine similarity function of scikit learns.
+    The cosine similarity score would indicate how much similar the 2 questions are. </p>
+
+
+    <h6 class="bold" >Steps Followed to get the good Accuracy : </h6>
+    <li> Converting the train data columns into an almost 
+        matching format with Input Example class of the sentence transformers library. </li>
+    <li> Initializing the data loader. </li>
+    <li> Initializing the model by using bert and pooler modules. </li>
+    <li> Fit MNR loss with the model. </li>
+    <li> Fine tuning our initialized model with the data loader and MNR loss for 1 epoch and saving the model. </li>
+    <li> Calculating the similarity score for a given question pair by using cosine similarity with the trained model. </li>
+
+<div>
+    <br>
+<p> <b> <u>Accuracy:</u></b> 84.781 %</p>
+
+<p> Click on the below link to find the Model code for Sentence Bert </p>
+<a href="https://github.com/prudhvitalluri/Data-Squad/blob/main/Sentence_Bert_Question_Similarity.ipynb">Sentence Bert</a>
+
+<p> Click on the below link to find the Model code for Sentence Bert Integration </p>
+<a href="https://github.com/prudhvitalluri/Data-Squad/blob/main/Sentence_Bert_Question_integrating_code%20to%20flask.ipynb">Sentence Bert Integration</a>
+
+</div>
+{% endblock %}
