@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<div style="padding : 60px;">
+<h1 class="h1 text-center"> EDA </h1> 
+
+<h6 class="bold"> <u> Peak of the Data Set: </u> </h6>
+
+<p> 
+    <blockquote class="blockquote" >To view how the data is looking. </blockquote>
+    <br>
+    <img src="{{url_for('static', filename='Dataset_overview.jpg')}}" alt="Cinque Terre" width="1100" height="200" />
+</br>
+</p>
+<h6 class="bold" >Steps Followed to clean the Data : </h6>
+<br>
+<table>
+
+    <tr>
+        <td style="padding: 100px;">
+            <h6 class="bold" >Duplicate vs nonduplicate : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='Duplicatevsnonduplicate.jpg')}}" alt="Cinque Terre" width="400" height="300" />
+            </br>
+            </p>
+        </td>
+        <td style="padding: 100px;">
+            <h6 class="bold" >Histogram of repeated questions : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='Histofrepeatedques.jpg')}}" alt="Cinque Terre" width="400" height="300" />
+            </br>
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 100px;">
+            <h6 class="bold" >No of words Token Frequency : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='token Frequency.jpg')}}" alt="Cinque Terre" width="600" height="300" />
+            </br>
+            </p>
+        </td>
+        <td style="padding: 100px;">
+            <h6 class="bold" >Most repeated questions : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='checking_mostfrequently.jpg')}}" alt="Cinque Terre" width="400" height="300" />
+            </br>
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="padding: 100px;">
+            <h6 class="bold" >No of words correct by word cloud presentation : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='correct Word cloud.jpg')}}" alt="Cinque Terre" width="400" height="300" />
+            </br>
+            </p>
+        </td>
+        <td style="padding: 100px;">
+            <h6 class="bold" >No of words incorrect by word cloud presentation : </h6>
+            <p> 
+                <br>
+                <img src="{{url_for('static', filename='incorrect_wordcloud.jpg')}}" alt="Cinque Terre" width="400" height="300" />
+            </br>
+            </p>
+        </td>
+    </tr>
+
+
+</table>
+
+
+<li> Removing the instances with missing values </li>
+<li> Removing the unwanted columns(id,qid1,qid2) </li>
+<li> Cleaning the data </li>
+<li> Applying CountVectorizer / Tokenizer </li>
+<li> Feature Engineering </li>
+</br>
+
+{% endblock %}
